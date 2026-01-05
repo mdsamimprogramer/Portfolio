@@ -1,222 +1,150 @@
-import React, { useEffect, useRef } from "react";
-import img1 from '../assets/1.png'
-import img2 from '../assets/2.png'
-import img3 from '../assets/3.png'
+import React from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import img1 from '../assets/1.png';
+import img2 from '../assets/2.png';
+import img3 from '../assets/3.png';
+import img4 from '../assets/4.png';
+import img5 from '../assets/5.png';
 
-const Projects = () => {
-    const revealRefs = useRef([]);
+const projectsData = [
+    {
+        id: 1,
+        title: "Contest Hub – Full-Stack Contest Management Platform",
+        description: "ContestHub is a full-stack platform to explore, join, and win contests. It features role-based dashboards (Admin, Creator, User), secure authentication, payment-based participation, contest approval, winner declaration, and a leaderboard system. Built with React, Node.js, Express, MongoDB, Firebase Authentication, JWT, Stripe, and TanStack Query.",
+        image: img4,
+        tech: ["React.js", "Tailwind CSS", "DaisyUI", "Node.js", "Express.js", "MongoDB", "Firebase Auth", "JWT", "Stripe", "TanStack Query", "Role Based Dashboard"],
+        repo: "https://github.com/mdsamimprogramer/ContestHub_Client",
+        demo: "https://contests-hub.netlify.app/"
+    },
+    {
+        id: 2,
+        title: "HomeHero – Service Finder",
+        description: "Connects users with trusted local service providers on a secure, responsive platform. Features booking management, rating system, and secure authentication.",
+        image: img1,
+        tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "CRUD Operation", "MongoDB", "Firebase"],
+        repo: "https://github.com/mdsamimprogramer/homehero-a10-client",
+        demo: "https://homehero-ass10.netlify.app/"
+    },
+    {
+        id: 3,
+        title: "GreenNest – Plant Care",
+        description: "A plant care platform featuring secure login, profile management, and consultation bookings. Built with React and Firebase.",
+        image: img2,
+        tech: ["React.js", "Tailwind CSS", "Firebase", "Express.js", "MongoDB"],
+        repo: "https://github.com/mdsamimprogramer/assinment-09-greennest-project",
+        demo: "https://asinment-8.firebaseapp.com/"
+    },
+    {
+        id: 4,
+        title: "Nature's Platter",
+        description: "Next.js application with NextAuth authentication and product management. precise UI implementation with Tailwind CSS.",
+        image: img3,
+        tech: ["Next.js", "NextAuth", "Tailwind CSS", "MongoDB", "Vercel"],
+        repo: "https://github.com/mdsamimprogramer/next-js-client",
+        demo: "https://next-js-client-vqte.vercel.app/"
+    },
+    {
+        id: 5,
+        title: "Productive-Apps AppGalaxy",
+        description: "AppGalaxy is a modern, responsive App Showcase Platform that allows users to easily browse apps, view details, install/uninstall apps, and monitor app performance through interactive review charts.",
+        image: img5,
+        tech: ["React.js", "Tailwind CSS", "React Router DOM", "Firebase", "Recharts", "LocalStorage"],
+        repo: "https://github.com/mdsamimprogramer/productive-apps",
+        demo: "https://assinment-08-productive-apps.netlify.app/"
+    }
+];
 
-    const addToRefs = (el) => {
-        if (el && !revealRefs.current.includes(el)) {
-            revealRefs.current.push(el);
-        }
-    };
-
-    useEffect(() => {
-        // Reveal
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.18 }
-        );
-
-        revealRefs.current.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
-
-    const handleMouseMove = (e) => {
-        const card = e.currentTarget;
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        const rotateY = (x - 0.5) * 10;
-        const rotateX = (0.5 - y) * 7;
-        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    };
-
-    const handleMouseLeave = (e) => {
-        const card = e.currentTarget;
-        card.style.transform = "";
-        card.style.transition = "transform 300ms ease";
-    };
-
-    const handleMouseEnter = (e) => {
-        const card = e.currentTarget;
-        card.style.transition = "transform 160ms ease";
-    };
-
+const ProjectCard = ({ project, index }) => {
     return (
-        <section className="projects container" id="projects">
-            <div className="reveal" ref={addToRefs}>
-                <span className="badge small">My Projects</span>
-                <h2 className="section-title">
-                    Showcasing my{" "}
-                    <span style={{ color: "var(--accent)", fontWeight: 900 }}>
-                        creative work
-                    </span>
-                </h2>
-                <p className="muted">
-                    Projects I've built while learning web development.
-                </p>
+        <motion.article
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            className="group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10"
+        >
+            <div className="relative h-48 overflow-hidden">
+                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-all duration-500 z-10" />
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
             </div>
 
-            <div className="projects-grid">
-                <article
-                    className="project-card reveal"
-                    tabIndex="0"
-                    ref={addToRefs}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
+            <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3">
+                    {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                        <span key={tech} className="px-2 py-1 text-xs font-medium bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-300 rounded-md border border-slate-200 dark:border-slate-700">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+
+                <div className="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                    >
+                        <Github size={16} /> Code
+                    </a>
+                    <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors ml-auto"
+                    >
+                        <ExternalLink size={16} /> Live Demo
+                    </a>
+                </div>
+            </div>
+        </motion.article>
+    );
+};
+
+const Projects = () => {
+    return (
+        <section id="projects" className="py-20 container">
+            <div className="text-center mb-16">
+                <motion.span
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-4"
                 >
-                    <div
-                        className="project-media"
-                        style={{
-                            backgroundImage: `url(${img1})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                    ></div>
-                    <div className="project-body">
-                        <h3>HomeHero – Service Finder</h3>
-                        <p className="muted">
-                            HomeHero connects users with trusted local service providers on a secure, responsive platform for seamless booking, rating, and management.
-                        </p>
-                        <div className="project-tags">
-                            <span className="tag">React.js</span>
-                            <span className="tag">React Router DOM</span>
-                            <span className="tag">Tailwind CSS</span>
-                            <span className="tag">DaisyUI</span>
-                            <span className="tag">Node.js</span>
-                            <span className="tag">Express.js</span>
-                            <span className="tag">MongoDB</span>
-                            <span className="tag">Firebase Auth</span>
-                            <span className="tag">JWT</span>
-                            <span className="tag">API</span>
-                            <span className="tag">Vite</span>
-                            <span className="tag">Git & GitHub</span>
-                            <span className="tag">Vercel</span>
-                        </div>
-
-                        <div style={{ display: "flex", gap: "10px" }}>
-                            <a className="btn btn--ghost small" href="https://github.com/mdsamimprogramer/homehero-a10-client">
-                                Code
-                            </a>
-                            <a className="btn btn--primary small" href="https://homehero-ass10.netlify.app/">
-                                Demo
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                {/* 2 */}
-                <article
-                    className="project-card reveal"
-                    tabIndex="0"
-                    ref={addToRefs}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
+                    My Work
+                </motion.span>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4"
                 >
-                    <div
-                        className="project-media"
-                        style={{
-                            backgroundImage: `url(${img2})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                    ></div>
-                    <div className="project-body">
-                        <h3>GreenNest – Plant Care</h3>
-                        <p className="muted">
-                            A React project using React Router, Tailwind CSS, Firebase Auth, JSON Data, and Framer Motion/Swiper.js, featuring secure login, protected routes, profile updates, and a consultation booking form.                        </p>
-                        <div className="project-tags">
-                            <span className="tag">React.js</span>
-                            <span className="tag">React Router DOM</span>
-                            <span className="tag">Tailwind CSS</span>
-                            <span className="tag">DaisyUI</span>
-                            <span className="tag">Firebase Auth</span>
-                            <span className="tag">Node.js</span>
-                            <span className="tag">Express.js</span>
-                            <span className="tag">MongoDB</span>
-                            <span className="tag">JWT</span>
-                            <span className="tag">API</span>
-                            <span className="tag">JSON Data</span>
-                            <span className="tag">Git & GitHub</span>
-                        </div>
-
-
-                        <div style={{ display: "flex", gap: "10px" }}>
-                            <a className="btn btn--ghost small" href="https://github.com/mdsamimprogramer/assinment-09-greennest-project">
-                                Code
-                            </a>
-                            <a className="btn btn--primary small" href="https://asinment-8.firebaseapp.com/">
-                                Demo
-                            </a>
-                        </div>
-                    </div>
-                </article>
-                {/* 3 */}
-                <article
-                    className="project-card reveal"
-                    tabIndex="0"
-                    ref={addToRefs}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseEnter={handleMouseEnter}
+                    Featured <span className="text-blue-500">Projects</span>
+                </motion.h2>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
                 >
-                    <div
-                        className="project-media"
-                        style={{
-                            backgroundImage: `url(${img3})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                    ></div>
-                    <div className="project-body">
-                        <h3>Nature's Platter (Next.js)</h3>
-                        <p className="muted">
-                            Nature's Platter: A Next.js (App Router) demo app with NextAuth.js authentication, minimal Express.js backend, responsive UI, public and protected pages, product management, and smooth user interactions.</p>
-                        <div className="project-tags">
-                            <span className="tag">Next.js</span>
-                            <span className="tag">React.js</span>
-                            <span className="tag">NextAuth.js</span>
-                            <span className="tag">Tailwind CSS</span>
-                            <span className="tag">Firebase Auth</span>
-                            <span className="tag">Node.js</span>
-                            <span className="tag">Express.js</span>
-                            <span className="tag">MongoDB</span>
-                            <span className="tag">JWT</span>
-                            <span className="tag">API</span>
-                            <span className="tag">JSON Data</span>
-                            <span className="tag">Git & GitHub</span>
-                            <span className="tag">Vercel</span>
-                            <span className="tag">Protected Routes</span>
-                        </div>
+                    A collection of projects showcasing my journey in full-stack development, featuring responsive designs and secure backends.
+                </motion.p>
+            </div>
 
-
-
-                        <div style={{ display: "flex", gap: "10px" }}>
-                            <a className="btn btn--ghost small" href="https://github.com/mdsamimprogramer/next-js-client">
-                                Code
-                            </a>
-                            <a className="btn btn--primary small" href="https://next-js-client-vqte.vercel.app/">
-                                Demo
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projectsData.map((project, index) => (
+                    <ProjectCard key={project.id} project={project} index={index} />
+                ))}
             </div>
         </section>
     );

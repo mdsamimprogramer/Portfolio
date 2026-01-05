@@ -1,136 +1,117 @@
-import React, { useEffect, useRef } from "react";
-import img from '../assets/samim.png'
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import img from '../assets/samim.png';
 
 const Hero = () => {
-    const revealRefs = useRef([]);
-
-    const addToRefs = (el) => {
-        if (el && !revealRefs.current.includes(el)) {
-            revealRefs.current.push(el);
-        }
-    };
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.18 }
-        );
-
-        revealRefs.current.forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    }, []);
+    const techStack = [
+        "HTML5", "CSS3", "Tailwind", "Bootstrap", "JavaScript", "React.js", "Next.js",
+        "Node.js", "Express.js", "MongoDB", "Firebase", "Git", "Vercel"
+    ];
 
     return (
-        <section className="hero container" id="hero">
-            <div className="hero-inner">
-                <div className="hero-left reveal" ref={addToRefs}>
-                    <span className="badge">Available for opportunities</span>
-                    <h1 className="hero-title">
-                        Hi, I'm <span className="accent-text">Samim</span>
-                        <span className="hero-sub">Aspiring Full-Stack Developer</span>
+        <section id="home" className="min-h-screen relative flex items-center justify-center pt-20 overflow-hidden text-slate-900 dark:text-slate-50">
+            {/* Background Gradients */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] -z-10" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] -z-10" />
+
+            <div className="container grid lg:grid-cols-2 gap-12 items-center">
+                {/* Left Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="max-w-2xl"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        Available for opportunities
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                        Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500">Samim</span>
+                        <span className="block text-2xl lg:text-4xl text-slate-600 dark:text-slate-400 font-medium mt-4">MERN-Stack Developer</span>
                     </h1>
-                    <p className="lead professional-lead">
-                        I am a <span className="neon">Full-Stack Developer</span> with expertise in{' '}
-                        <span className="neon">React.js</span>, <span className="neon">Next.js</span>,{' '}
-                        <span className="neon">Node.js</span>, <span className="neon">Express.js</span>, and{' '}
-                        <span className="neon">MongoDB</span>. I create modern, responsive, and high-performance web applications{' '}
-                        that deliver seamless user experiences. Additionally, I have experience with{' '}
-                        <span className="neon">Tailwind CSS</span>, <span className="neon">Bootstrap</span>,{' '}
-                        <span className="neon">Firebase</span>, and deploying apps on{' '}
-                        <span className="neon">Vercel</span> and <span className="neon">Netlify</span>.
+
+                    <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                        Building modern, scalable web applications with
+                        <span className="text-slate-900 dark:text-slate-100 font-semibold"> React</span>,
+                        <span className="text-slate-900 dark:text-slate-100 font-semibold"> Next.js</span>, and
+                        <span className="text-slate-900 dark:text-slate-100 font-semibold"> Node.js</span>.
+                        Focused on creating intuitive user experiences and performant backend systems.
                     </p>
 
-                    <div className="cta-row">
-                        <a className="btn btn--primary" href="#contact">
-                            Get In Touch
+                    <div className="flex flex-wrap items-center gap-4 mb-12">
+                        <a
+                            href="#contact"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all hover:scale-105 shadow-lg shadow-blue-600/25"
+                        >
+                            Get In Touch <ArrowRight size={20} />
                         </a>
-                        <a className="btn btn--outline" href="#projects">
+                        <a
+                            href="#projects"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-lg font-semibold transition-all hover:scale-105 border border-slate-200 dark:border-slate-700 shadow-sm"
+                        >
                             View Work
                         </a>
                     </div>
-                </div>
 
-                <div
-                    className="hero-right reveal"
-                    ref={addToRefs}
-                    style={{ display: "flex", justifyContent: "flex-end", minWidth: "220px" }}
-                >
-                    <div className="profile-wrap" aria-hidden="true">
-                        <div className="profile">
-                            <img
-                                src={img}
-                                alt="Profile photo - placeholder"
-                            />
-                        </div>
-                        <div className="status-pill pulse" title="Ready to work">
-                            <span className="status-dot" aria-hidden="true"></span>
-                            <span style={{ fontWeight: 700 }}>Ready to Work</span>
-                        </div>
+                    <div className="flex items-center gap-6 text-slate-600 dark:text-slate-400">
+                        <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Github size={24} /></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Linkedin size={24} /></a>
+                        <a href="mailto:email@example.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Mail size={24} /></a>
                     </div>
-                </div>
+                </motion.div>
+
+                {/* Right Image */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="relative flex justify-center lg:justify-end"
+                >
+                    <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-[2rem] rotate-6 opacity-20 blur-2xl"></div>
+                        <img
+                            src={img}
+                            alt="Samim - Developer"
+                            className="relative w-full h-full object-cover rounded-[2rem] border-2 border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-900"
+                        />
+                        {/* Floating Badge */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400">
+                                    <span className="text-xl font-bold">5+</span>
+                                </div>
+                                <div className="text-sm">
+                                    <p className="font-semibold text-slate-900 dark:text-slate-200">Projects</p>
+                                    <p className="text-slate-600 dark:text-slate-400">Completed</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
             </div>
 
-            {/* TECH RIBBON */}
-            <div
-                className="tech-ribbon reveal"
-                ref={addToRefs}
-                aria-hidden="true"
-                style={{ marginTop: "22px" }}
-            >
-                <div className="tech-inner container" style={{ display: "flex", flexWrap: "wrap", gap: "10px", alignItems: "center" }}>
-                    {/* Frontend */}
-                    <div className="tech-item">HTML5</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">CSS3</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Tailwind CSS</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Bootstrap</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">JavaScript</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">React.js</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Next.js</div>
-
-                    {/* Backend */}
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Node.js</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Express.js</div>
-
-                    {/* Database */}
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">MongoDB</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Firebase</div>
-
-                    {/* Version Control & Deployment */}
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Git & GitHub</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Vercel</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Netlify</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Surge</div>
-
-                    {/* CMS & Others */}
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">WordPress</div>
-                    <div className="tech-sep">+</div>
-                    <div className="tech-item">Figma</div>
+            {/* Tech Ribbon */}
+            <div className="absolute bottom-0 w-full border-t border-slate-200 dark:border-white/5 bg-slate-100/50 dark:bg-white/[0.02] backdrop-blur-sm overflow-hidden py-4">
+                <div className="flex items-center gap-8 animate-marquee whitespace-nowrap">
+                    {/* Duplicated list for seamless scroll (implementation requires custom animation config in tailwind) */}
+                    {[...techStack, ...techStack].map((tech, index) => (
+                        <span key={index} className="text-slate-600 dark:text-slate-400 font-medium text-sm lg:text-base flex items-center gap-2 px-4">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50"></span> {tech}
+                        </span>
+                    ))}
                 </div>
             </div>
-
         </section>
     );
 };
