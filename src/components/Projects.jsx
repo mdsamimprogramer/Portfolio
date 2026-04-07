@@ -6,8 +6,17 @@ import img2 from '../assets/2.png';
 import img3 from '../assets/3.png';
 import img4 from '../assets/4.png';
 import img5 from '../assets/5.png';
+import img6 from '../assets/6.png';
 
 const projectsData = [
+    {
+        id: 6,
+        title: "CareerFlow – SaaS Job Application Tracking Platform",
+        description: "CareerFlow is a full-stack SaaS platform designed to help developers and job seekers manage their job applications efficiently. It includes a drag-and-drop Kanban pipeline for tracking applications, secure cloud storage for resumes, AI-powered feedback using the Gemini API to analyze job descriptions, automated email reminders for interviews and deadlines, Stripe-based subscription management, and a real-time analytics dashboard to monitor job search progress.",
+        image: img6,
+        tech: ["React.js", "Redux", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "REST API", "AI API", "Stripe", "Serverless Cron Jobs", "Email Automation", "Axios", "Kanban Drag & Drop"], repo: "https://github.com/mdsamimprogramer/careerflow-job-tracker",
+        demo: "https://career-flow-six.vercel.app/"
+    },
     {
         id: 1,
         title: "Contest Hub – Full-Stack Contest Management Platform",
@@ -22,7 +31,7 @@ const projectsData = [
         title: "HomeHero – Service Finder",
         description: "Connects users with trusted local service providers on a secure, responsive platform. Features booking management, rating system, and secure authentication.",
         image: img1,
-        tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "CRUD Operation", "MongoDB", "Firebase"],
+        tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "CRUD Operation", "JWT", "REST API", "MongoDB", "Firebase"],
         repo: "https://github.com/mdsamimprogramer/homehero-a10-client",
         demo: "https://homehero-ass10.netlify.app/"
     },
