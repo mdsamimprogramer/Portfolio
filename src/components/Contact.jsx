@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Loader2, ArrowUpRight, Sparkles, CheckCircle2, AlertCircle } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import emailjs from '@emailjs/browser';
 
 const contactInfo = [
     {
@@ -75,7 +79,7 @@ const ContactInfoCard = ({ item, index }) => {
     );
 };
 
-/* ── Starry Gradient Background (Apple / Linear / Vercel-inspired) ── */
+/* ── Cinematic Starry Background ── */
 const StarryGradientBg = () => {
     const canvasRef = useRef(null);
 
@@ -87,7 +91,7 @@ const StarryGradientBg = () => {
         let time = 0;
         let stars = [];
 
-        const dpr = window.devicePixelRatio > 1 ? 2 : 1;
+        const dpr = Math.min(window.devicePixelRatio, 2);
 
         const resize = () => {
             canvas.width = canvas.offsetWidth * dpr;
@@ -98,27 +102,64 @@ const StarryGradientBg = () => {
         const createStars = () => {
             const w = canvas.width;
             const h = canvas.height;
-            const count = Math.floor((w * h) / 9000);
+            const area = w * h;
             stars = [];
-            for (let i = 0; i < count; i++) {
+
+            // Tier 1: Tiny ambient dust (many, subtle)
+            const tinyCount = Math.floor(area / 6000);
+            for (let i = 0; i < tinyCount; i++) {
                 stars.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    size: Math.random() * 1.6 + 0.3,
-                    baseAlpha: Math.random() * 0.45 + 0.15,
-                    twinkleSpeed: Math.random() * 0.015 + 0.004,
+                    size: Math.random() * 0.8 + 0.2,
+                    baseAlpha: Math.random() * 0.3 + 0.1,
+                    twinkleSpeed: Math.random() * 0.008 + 0.003,
                     twinkleOffset: Math.random() * Math.PI * 2,
-                    driftX: (Math.random() - 0.5) * 0.12,
-                    driftY: (Math.random() - 0.5) * 0.08,
+                    driftX: (Math.random() - 0.5) * 0.06,
+                    driftY: (Math.random() - 0.5) * 0.04,
+                    tier: 1,
+                });
+            }
+
+            // Tier 2: Medium glowing stars (moderate count, visible glow)
+            const medCount = Math.floor(area / 25000);
+            for (let i = 0; i < medCount; i++) {
+                stars.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    size: Math.random() * 1.2 + 0.8,
+                    baseAlpha: Math.random() * 0.4 + 0.3,
+                    twinkleSpeed: Math.random() * 0.012 + 0.004,
+                    twinkleOffset: Math.random() * Math.PI * 2,
+                    driftX: (Math.random() - 0.5) * 0.1,
+                    driftY: (Math.random() - 0.5) * 0.07,
+                    tier: 2,
+                });
+            }
+
+            // Tier 3: Large hero stars (few, dramatic glow)
+            const heroCount = Math.floor(area / 120000);
+            for (let i = 0; i < heroCount; i++) {
+                stars.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    size: Math.random() * 1.5 + 1.5,
+                    baseAlpha: Math.random() * 0.3 + 0.5,
+                    twinkleSpeed: Math.random() * 0.006 + 0.002,
+                    twinkleOffset: Math.random() * Math.PI * 2,
+                    driftX: (Math.random() - 0.5) * 0.04,
+                    driftY: (Math.random() - 0.5) * 0.03,
+                    tier: 3,
                 });
             }
         };
 
+        // Soft ambient gradient blobs
         const blobs = [
-            { x: 0.2, y: 0.15, r: 0.5, color: [99, 102, 241], speed: 0.0002 },
-            { x: 0.8, y: 0.85, r: 0.45, color: [139, 92, 246], speed: 0.00018 },
-            { x: 0.65, y: 0.25, r: 0.35, color: [59, 130, 246], speed: 0.00025 },
-            { x: 0.35, y: 0.75, r: 0.3, color: [79, 70, 229], speed: 0.00015 },
+            { x: 0.18, y: 0.12, r: 0.55, color: [99, 102, 241], speed: 0.00015 },
+            { x: 0.82, y: 0.88, r: 0.5, color: [139, 92, 246], speed: 0.00012 },
+            { x: 0.6, y: 0.2, r: 0.4, color: [59, 130, 246], speed: 0.0002 },
+            { x: 0.3, y: 0.75, r: 0.35, color: [79, 70, 229], speed: 0.0001 },
         ];
 
         resize();
@@ -132,51 +173,55 @@ const StarryGradientBg = () => {
 
             ctx.clearRect(0, 0, w, h);
 
-            // 1. Draw soft gradient blobs
+            // 1. Gradient blobs — soft ambient color wash
             blobs.forEach((b) => {
-                const cx = (b.x + Math.sin(time * b.speed) * 0.06) * w;
-                const cy = (b.y + Math.cos(time * b.speed * 1.2) * 0.05) * h;
+                const cx = (b.x + Math.sin(time * b.speed) * 0.05) * w;
+                const cy = (b.y + Math.cos(time * b.speed * 1.1) * 0.04) * h;
                 const radius = b.r * Math.max(w, h);
-                const alpha = isDark ? 0.1 : 0.06;
+                const alpha = isDark ? 0.12 : 0.055;
 
                 const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
                 grad.addColorStop(0, `rgba(${b.color.join(",")}, ${alpha})`);
+                grad.addColorStop(0.6, `rgba(${b.color.join(",")}, ${alpha * 0.3})`);
                 grad.addColorStop(1, `rgba(${b.color.join(",")}, 0)`);
                 ctx.fillStyle = grad;
                 ctx.fillRect(0, 0, w, h);
             });
 
-            // 2. Draw white stars with twinkle + soft glow
+            // 2. Stars — 3-tier rendering
             stars.forEach((s) => {
                 const twinkle = Math.sin(time * s.twinkleSpeed + s.twinkleOffset);
-                const alpha = s.baseAlpha * (0.5 + 0.5 * twinkle);
-                const visAlpha = isDark ? alpha : alpha * 0.3;
+                const pulse = 0.45 + 0.55 * twinkle;
+                const alpha = s.baseAlpha * pulse;
+                const visAlpha = isDark ? alpha : alpha * 0.4;
 
-                if (visAlpha < 0.02) return;
+                if (visAlpha < 0.015) return;
 
-                // Drift
+                // Gentle drift
                 s.x += s.driftX;
                 s.y += s.driftY;
-                if (s.x < 0) s.x = w;
-                if (s.x > w) s.x = 0;
-                if (s.y < 0) s.y = h;
-                if (s.y > h) s.y = 0;
+                if (s.x < -10) s.x = w + 10;
+                if (s.x > w + 10) s.x = -10;
+                if (s.y < -10) s.y = h + 10;
+                if (s.y > h + 10) s.y = -10;
 
-                // Soft glow halo for larger stars
-                if (s.size > 0.9) {
-                    const glowR = s.size * 5;
+                // Glow halos — tier-dependent
+                if (s.tier >= 2) {
+                    const glowR = s.tier === 3 ? s.size * 10 : s.size * 6;
+                    const glowAlpha = s.tier === 3 ? visAlpha * 0.2 : visAlpha * 0.18;
                     const glow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
-                    glow.addColorStop(0, `rgba(255, 255, 255, ${visAlpha * 0.3})`);
-                    glow.addColorStop(1, `rgba(255, 255, 255, 0)`);
+                    glow.addColorStop(0, `rgba(200, 210, 255, ${glowAlpha})`);
+                    glow.addColorStop(0.4, `rgba(200, 210, 255, ${glowAlpha * 0.3})`);
+                    glow.addColorStop(1, `rgba(200, 210, 255, 0)`);
                     ctx.fillStyle = glow;
                     ctx.fillRect(s.x - glowR, s.y - glowR, glowR * 2, glowR * 2);
                 }
 
-                // Star core — always white
+                // Star core
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                const coreColor = isDark ? "255,255,255" : "180,185,210";
-                ctx.fillStyle = `rgba(${coreColor}, ${visAlpha})`;
+                const brightness = isDark ? 255 : 170;
+                ctx.fillStyle = `rgba(${brightness},${brightness},${Math.min(brightness + 20, 255)}, ${visAlpha})`;
                 ctx.fill();
             });
 
@@ -198,51 +243,110 @@ const StarryGradientBg = () => {
     );
 };
 
+const formSchema = z.object({
+    firstName: z.string().min(2, "First name is required"),
+    lastName: z.string().optional(),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().optional(),
+    message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+const InputField = ({ id, label, type = "text", register, error, isTextArea, required }) => {
+    const baseClasses = `peer w-full px-4 rounded-xl text-sm font-medium outline-none transition-all duration-300 resize-none
+         bg-white/60 dark:bg-white/[0.04] backdrop-blur-sm
+         text-slate-900 dark:text-slate-100
+         border border-slate-200/80 dark:border-white/[0.08] hover:border-indigo-300/40 dark:hover:border-white/[0.12]
+         focus:border-indigo-400/60 dark:focus:border-indigo-400/40 focus:ring-4 focus:ring-indigo-500/10 dark:focus:ring-indigo-400/10 focus:bg-white/90 dark:focus:bg-white/[0.06] focus:shadow-[0_0_20px_rgba(99,102,241,0.06)]`;
+
+    return (
+        <div className="relative group w-full">
+            {isTextArea ? (
+                <textarea
+                    id={id}
+                    {...register}
+                    rows="5"
+                    placeholder=" "
+                    className={`${baseClasses} pt-6 pb-3`}
+                />
+            ) : (
+                <input
+                    id={id}
+                    type={type}
+                    {...register}
+                    placeholder=" "
+                    className={`${baseClasses} pt-6 pb-2`}
+                />
+            )}
+            <label
+                htmlFor={id}
+                className="absolute left-4 top-4 text-slate-500 dark:text-slate-400 text-sm font-medium transition-all pointer-events-none 
+                    peer-focus:text-xs peer-focus:top-2 peer-focus:text-indigo-600 dark:peer-focus:text-indigo-400 
+                    peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:top-2"
+            >
+                {label} {required && <span className="text-indigo-500">*</span>}
+            </label>
+            <AnimatePresence>
+                {error && (
+                    <motion.span
+                        initial={{ opacity: 0, height: 0, y: -10 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -10 }}
+                        className="text-xs text-red-500 font-medium flex items-center gap-1 mt-1.5 ml-1 overflow-hidden"
+                    >
+                        <AlertCircle size={12} className="flex-shrink-0" /> {error.message}
+                    </motion.span>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
-    });
-    const [status, setStatus] = useState({ msg: "", type: "", loading: false });
-    const [focusedField, setFocusedField] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(formSchema),
+    });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus({ msg: "", type: "", loading: false });
+    const onSubmit = async (data) => {
+        setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        if (!formData.firstName || !formData.email || !formData.message) {
-            setStatus({ msg: "Please fill required fields (Name, Email, Message).", type: "error", loading: false });
-            return;
+        try {
+            console.log("Sending with:", import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+            // Real EmailJS Integration
+            const response = await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: `${data.firstName} ${data.lastName || ''}`,
+                    from_email: data.email,
+                    phone: data.phone || 'N/A',
+                    message: data.message,
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+            
+            console.log("SUCCESS!", response.status, response.text);
+            setSubmitStatus({ type: "success", msg: "Message sent successfully! I'll get back to you soon." });
+            reset();
+        } catch (error) {
+            console.error("FAILED...", error);
+            setSubmitStatus({ type: "error", msg: error?.text || error?.message || "Something went wrong. Please try again." });
+        } finally {
+            setIsSubmitting(false);
+            setTimeout(() => setSubmitStatus(null), 5000);
         }
-
-        setStatus({ msg: "", type: "", loading: true });
-
-        // Simulate network request
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        setStatus({ msg: "Message sent successfully! I'll get back to you soon.", type: "success", loading: false });
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
     };
-
-    const inputClasses = (fieldName) =>
-        `w-full px-4 py-3.5 rounded-xl text-sm font-medium outline-none transition-all duration-300 resize-none
-         bg-white/60 dark:bg-white/[0.04] backdrop-blur-sm
-         text-slate-900 dark:text-slate-100
-         placeholder:text-slate-400 dark:placeholder:text-slate-600
-         ${focusedField === fieldName
-            ? "border-indigo-400/60 dark:border-indigo-400/40 ring-4 ring-indigo-500/10 dark:ring-indigo-400/10 bg-white/90 dark:bg-white/[0.06] shadow-[0_0_20px_rgba(99,102,241,0.06)]"
-            : "border border-slate-200/80 dark:border-white/[0.08] hover:border-indigo-300/40 dark:hover:border-white/[0.12]"
-        }`;
 
     return (
         <section
@@ -266,17 +370,17 @@ const Contact = () => {
                 }}
             />
 
-            {/* Radial center vignette — draws eye to content */}
+            {/* Radial center vignette — cinematic depth */}
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                    background: "radial-gradient(ellipse 80% 60% at 50% 40%, transparent 40%, rgba(0,0,0,0.02) 100%)",
+                    background: "radial-gradient(ellipse 80% 60% at 50% 35%, transparent 30%, rgba(0,0,0,0.03) 100%)",
                 }}
             />
             <div
-                className="absolute inset-0 pointer-events-none dark:block hidden"
+                className="absolute inset-0 pointer-events-none hidden dark:block"
                 style={{
-                    background: "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(99,102,241,0.04) 0%, transparent 70%)",
+                    background: "radial-gradient(ellipse 65% 45% at 50% 35%, rgba(99,102,241,0.06) 0%, transparent 70%)",
                 }}
             />
 
@@ -398,98 +502,56 @@ const Contact = () => {
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-5">
+                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                                     {/* Name Row */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                        <div className="space-y-2">
-                                            <label htmlFor="contact-firstName" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                                First Name <span className="text-indigo-500">*</span>
-                                            </label>
-                                            <input
-                                                id="contact-firstName"
-                                                name="firstName"
-                                                value={formData.firstName}
-                                                onChange={handleChange}
-                                                onFocus={() => setFocusedField("firstName")}
-                                                onBlur={() => setFocusedField(null)}
-                                                className={inputClasses("firstName")}
-                                                placeholder="John"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label htmlFor="contact-lastName" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                                Last Name
-                                            </label>
-                                            <input
-                                                id="contact-lastName"
-                                                name="lastName"
-                                                value={formData.lastName}
-                                                onChange={handleChange}
-                                                onFocus={() => setFocusedField("lastName")}
-                                                onBlur={() => setFocusedField(null)}
-                                                className={inputClasses("lastName")}
-                                                placeholder="Doe"
-                                            />
-                                        </div>
+                                        <InputField
+                                            id="firstName"
+                                            label="First Name"
+                                            register={register("firstName")}
+                                            error={errors.firstName}
+                                            required
+                                        />
+                                        <InputField
+                                            id="lastName"
+                                            label="Last Name"
+                                            register={register("lastName")}
+                                            error={errors.lastName}
+                                        />
                                     </div>
 
                                     {/* Email + Phone Row */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                        <div className="space-y-2">
-                                            <label htmlFor="contact-email" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                                Email <span className="text-indigo-500">*</span>
-                                            </label>
-                                            <input
-                                                id="contact-email"
-                                                name="email"
-                                                type="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                onFocus={() => setFocusedField("email")}
-                                                onBlur={() => setFocusedField(null)}
-                                                className={inputClasses("email")}
-                                                placeholder="john@example.com"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label htmlFor="contact-phone" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                                Phone
-                                            </label>
-                                            <input
-                                                id="contact-phone"
-                                                name="phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                                onFocus={() => setFocusedField("phone")}
-                                                onBlur={() => setFocusedField(null)}
-                                                className={inputClasses("phone")}
-                                                placeholder="+1 234 567 890"
-                                            />
-                                        </div>
+                                        <InputField
+                                            id="email"
+                                            label="Email Address"
+                                            type="email"
+                                            register={register("email")}
+                                            error={errors.email}
+                                            required
+                                        />
+                                        <InputField
+                                            id="phone"
+                                            label="Phone Number"
+                                            register={register("phone")}
+                                            error={errors.phone}
+                                        />
                                     </div>
 
                                     {/* Message */}
-                                    <div className="space-y-2">
-                                        <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                            Message <span className="text-indigo-500">*</span>
-                                        </label>
-                                        <textarea
-                                            id="contact-message"
-                                            name="message"
-                                            rows="5"
-                                            value={formData.message}
-                                            onChange={handleChange}
-                                            onFocus={() => setFocusedField("message")}
-                                            onBlur={() => setFocusedField(null)}
-                                            className={inputClasses("message")}
-                                            placeholder="Tell me about your project, idea, or just say hello..."
-                                        />
-                                    </div>
+                                    <InputField
+                                        id="message"
+                                        label="Your Message"
+                                        register={register("message")}
+                                        error={errors.message}
+                                        isTextArea
+                                        required
+                                    />
 
                                     {/* Submit Button */}
                                     <button
                                         type="submit"
-                                        disabled={status.loading}
+                                        disabled={isSubmitting}
                                         className="group/btn relative w-full py-4 rounded-xl font-bold text-sm tracking-wide
                                             bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600
                                             hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500
@@ -506,7 +568,7 @@ const Contact = () => {
                                         </span>
 
                                         <span className="relative flex items-center gap-2.5">
-                                            {status.loading ? (
+                                            {isSubmitting ? (
                                                 <>
                                                     <Loader2 className="animate-spin" size={18} />
                                                     Sending...
@@ -522,25 +584,29 @@ const Contact = () => {
 
                                     {/* Status Message */}
                                     <AnimatePresence mode="wait">
-                                        {status.msg && (
+                                        {submitStatus && (
                                             <motion.div
-                                                key={status.type}
                                                 initial={{ opacity: 0, y: 10, height: 0 }}
                                                 animate={{ opacity: 1, y: 0, height: "auto" }}
                                                 exit={{ opacity: 0, y: -10, height: 0 }}
                                                 transition={{ duration: 0.3 }}
-                                                className={`flex items-center gap-3 p-4 rounded-xl text-sm font-medium
-                                                    ${status.type === "error"
+                                                className={`flex items-center gap-3 p-4 rounded-xl text-sm font-medium overflow-hidden
+                                                    ${submitStatus.type === "error"
                                                         ? "bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20"
                                                         : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
                                                     }`}
                                             >
-                                                {status.type === "error" ? (
-                                                    <AlertCircle size={18} className="flex-shrink-0" />
+                                                {submitStatus.type === "error" ? (
+                                                    <>
+                                                        <AlertCircle size={18} className="flex-shrink-0" />
+                                                        {submitStatus.msg}
+                                                    </>
                                                 ) : (
-                                                    <CheckCircle2 size={18} className="flex-shrink-0" />
+                                                    <>
+                                                        <CheckCircle2 size={18} className="flex-shrink-0" />
+                                                        {submitStatus.msg}
+                                                    </>
                                                 )}
-                                                {status.msg}
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
