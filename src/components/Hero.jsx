@@ -63,7 +63,7 @@ const Hero = () => {
                         <a href="https://github.com/mdsamimprogramer" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Github size={24} /></a>
                         <a href="https://www.linkedin.com/in/samim01/" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Linkedin size={24} /></a>
                         <a href="https://www.facebook.com/md.samim.khan.22906" target="_blank" rel="noreferrer" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Facebook size={24} /></a>
-                        <a href="mdsamimhossen827@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Mail size={24} /></a>
+                        <a href="mailto:mdsamimhossen827@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><Mail size={24} /></a>
                     </div>
                 </motion.div>
 

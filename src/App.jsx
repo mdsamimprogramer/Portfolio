@@ -13,7 +13,7 @@ function App() {
     <>
       <BackgroundAnimation />
       <Header />
-      <main id="home">
+      <main>
         <Hero />
         <About />
         <Skills />
