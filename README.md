@@ -1,54 +1,33 @@
 <div align="center">
 
-# ✨ Samim — Personal Portfolio
+<img src="public/desktop-preview.png" alt="Samim Portfolio" width="800" />
 
-### Modern, responsive developer portfolio built with React & Vite
+# 👋 Hi, I'm Samim
+
+### MERN-Stack Developer | Building Modern Web Experiences
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-blue?style=for-the-badge)](https://samim01-portfolio.netlify.app/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+<br />
+
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-samim01--portfolio.netlify.app-blue?style=for-the-badge)](https://samim01-portfolio.netlify.app/)
+[![Download CV](https://img.shields.io/badge/📄_Download-My_CV-8B5CF6?style=for-the-badge)](https://drive.google.com/file/d/16okLOsG4D9C9m3-JjJfSJmGPagyxf1VP/view?usp=sharing)
 
 </div>
 
 ---
 
-## 📸 Preview
+## 🚀 About Me
 
-<div align="center">
+I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, specializing in the **MERN Stack**. I build modern, scalable web applications with **React**, **Next.js**, and **Node.js** — focused on creating intuitive user experiences and performant backend systems.
 
-| Desktop | Mobile |
-|---------|--------|
-| ![Desktop Preview](public/desktop-preview.png) | ![Mobile Preview](public/mobile-preview.png) |
-
-</div>
-
----
-
-## 🎯 About
-
-A **production-ready** personal portfolio showcasing my journey as a **MERN-Stack Developer**. Designed with attention to every pixel — featuring glassmorphism, smooth animations, dark/light mode, and a fully functional contact form.
-
-> 💡 Built to impress recruiters and clients with premium aesthetics and clean code.
-
----
-
-## ⚡ Features
-
-| Feature | Description |
-|---------|-------------|
-| 🎨 **Premium Design** | Glassmorphism, gradient accents, floating badges & shimmer effects |
-| 🌙 **Dark / Light Mode** | Persistent theme toggle with smooth transitions |
-| 🎬 **Framer Motion** | Scroll-triggered animations, staggered reveals & micro-interactions |
-| ✉️ **Contact Form** | EmailJS integration with Zod validation & honeypot anti-spam |
-| 📱 **Fully Responsive** | Mobile-first design with animated hamburger menu |
-| ✨ **Canvas Animations** | Floating particles + ambient blob background |
-| 🔍 **Active Nav Tracking** | IntersectionObserver-based section highlighting |
-| ♿ **Accessible** | ARIA labels, focus-visible rings, keyboard navigation |
-| 🚀 **Blazing Fast** | Vite-powered with optimized production builds |
+- 🔭 Currently working on **Full-Stack SaaS applications**
+- 🌱 Always learning and exploring new technologies
+- 💼 Open to **freelance projects**, **full-time roles**, and **collaborations**
+- ⚡ 10+ projects completed and counting
 
 ---
 
@@ -56,171 +35,139 @@ A **production-ready** personal portfolio showcasing my journey as a **MERN-Stac
 
 <div align="center">
 
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React 19, JSX |
-| **Build Tool** | Vite 7 |
-| **Styling** | Tailwind CSS 3, PostCSS, Autoprefixer |
-| **Animations** | Framer Motion 12 |
-| **Forms** | React Hook Form + Zod |
-| **Email** | EmailJS |
-| **Icons** | Lucide React |
-| **Utilities** | clsx, tailwind-merge |
-| **Deployment** | Vercel / Netlify |
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
 
 </div>
 
 ---
 
-## 📁 Project Structure
+## 💼 Featured Projects
 
-```
-Portfolio/
-├── public/
-│   ├── samim.png               # Favicon
-│   └── vite.svg
-├── src/
-│   ├── assets/                 # Images & project screenshots
-│   │   ├── me.png              # Hero profile photo
-│   │   ├── me3.png             # About section photo
-│   │   └── 1-6.png             # Project screenshots
-│   ├── components/
-│   │   ├── Header.jsx          # Sticky navbar + theme toggle + CV download
-│   │   ├── Hero.jsx            # Landing hero with social links & tech ribbon
-│   │   ├── About.jsx           # Bio section with floating badges
-│   │   ├── Skills.jsx          # Animated skill progress bars
-│   │   ├── Projects.jsx        # Project cards with live demo & repo links
-│   │   ├── Contact.jsx         # EmailJS form + starry canvas background
-│   │   ├── Footer.jsx          # Footer with quick links & socials
-│   │   └── BackgroundAnimation.jsx  # Canvas particle system
-│   ├── App.jsx                 # Root component
-│   ├── main.jsx                # React entry point
-│   ├── index.css               # Tailwind base styles
-│   └── utils.js                # cn() utility (clsx + twMerge)
-├── .env                        # EmailJS credentials (⚠️ do not commit)
-├── tailwind.config.js          # Theme customization
-├── vite.config.js              # Vite configuration
-└── package.json
-```
+### 1. 🚀 CareerFlow — SaaS Job Application Tracker
+> Full-stack SaaS platform with drag-and-drop Kanban pipeline, AI-powered feedback (Gemini API), Stripe subscriptions, and real-time analytics.
+
+**Tech:** React · Redux · Node.js · Express · MongoDB · Stripe · AI API
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://career-flow-six.vercel.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/careerflow-job-tracker)
 
 ---
 
-## 🚀 Getting Started
+### 2. 🏆 Contest Hub — Contest Management Platform
+> Full-stack platform with role-based dashboards (Admin, Creator, User), Stripe payments, contest approval workflow, and leaderboard system.
 
-### Prerequisites
+**Tech:** React · Tailwind · Node.js · Express · MongoDB · Firebase Auth · JWT · Stripe
 
-- **Node.js** ≥ 18
-- **npm** ≥ 9
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/mdsamimprogramer/Portfolio.git
-
-# Navigate to project directory
-cd Portfolio
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-The app will be available at `http://localhost:5173`
-
-### Build for Production
-
-```bash
-npm run build
-npm run preview
-```
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://contests-hub.netlify.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/ContestHub_Client)
 
 ---
 
-## 🔐 Environment Variables
+### 3. 🏠 HomeHero — Service Finder
+> Connects users with trusted local service providers. Features booking management, rating system, and secure JWT authentication.
 
-Create a `.env` file in the project root:
+**Tech:** React · Tailwind · Node.js · Express · MongoDB · Firebase · JWT
 
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-> ⚠️ **Important:** Never commit your `.env` file. Make sure it's listed in `.gitignore`.
-
-Get your credentials from [EmailJS Dashboard](https://www.emailjs.com/).
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://homehero-ass10.netlify.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/homehero-a10-client)
 
 ---
 
-## 🌐 Deployment
+### 4. 🌿 GreenNest — Plant Care Platform
+> Plant care platform with secure login, profile management, and consultation bookings.
 
-### Vercel (Recommended)
+**Tech:** React · Tailwind · Firebase · Express · MongoDB
 
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-Add `VITE_EMAILJS_*` environment variables in **Vercel Dashboard → Settings → Environment Variables**.
-
-### Netlify
-
-1. Connect your GitHub repo on [Netlify](https://netlify.com)
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-4. Add environment variables in site settings
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://asinment-8.firebaseapp.com/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/assinment-09-greennest-project)
 
 ---
 
-## 🎨 Design Philosophy
+### 5. 🍽️ Nature's Platter — Next.js App
+> Next.js application with NextAuth authentication and product management.
 
-- **Motion with purpose** — Subtle, long-duration background animations paired with snappy micro-interactions on user events
-- **Clarity first** — Generous whitespace, high-contrast typography, and clear action affordances
-- **Progressive enhancement** — Core content works without JavaScript; accessibility is a first-class concern
-- **Premium feel** — Every component uses carefully tuned gradients, glassmorphism, and layered depth
+**Tech:** Next.js · NextAuth · Tailwind · MongoDB · Vercel
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://next-js-client-vqte.vercel.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/next-js-client)
 
 ---
 
-## 📬 Contact
+### 6. 📱 AppGalaxy — App Showcase Platform
+> Browse apps, view details, install/uninstall apps, and monitor performance through interactive charts.
+
+**Tech:** React · Tailwind · Firebase · Recharts · React Router
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://assinment-08-productive-apps.netlify.app/)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/productive-apps)
+
+---
+
+## ✨ Portfolio Features
 
 <div align="center">
 
-[![Email](https://img.shields.io/badge/Email-mdsamimhossen827@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mdsamimhossen827@gmail.com)
+| | Feature | Description |
+|---|---------|-------------|
+| 🎨 | **Premium Design** | Glassmorphism, gradient accents, floating badges & shimmer effects |
+| 🌙 | **Dark / Light Mode** | Persistent theme toggle with smooth transitions |
+| 🎬 | **Smooth Animations** | Scroll-triggered reveals & micro-interactions via Framer Motion |
+| ✉️ | **Working Contact Form** | EmailJS integration with Zod validation |
+| 📱 | **Fully Responsive** | Looks stunning on every device |
+| ✨ | **Canvas Particles** | Interactive floating particle background |
+| 🚀 | **Blazing Fast** | Vite-powered, optimized production builds |
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+| Desktop View | Mobile View |
+|:---:|:---:|
+| ![Desktop](public/desktop-preview.png) | ![Mobile](public/mobile-preview.png) |
+
+</div>
+
+---
+
+## 📬 Let's Connect
+
+<div align="center">
+
+I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+
+<br />
+
+[![Email](https://img.shields.io/badge/mdsamimhossen827@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mdsamimhossen827@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Samim-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samim01/)
 [![GitHub](https://img.shields.io/badge/GitHub-mdsamimprogramer-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mdsamimprogramer)
 [![Facebook](https://img.shields.io/badge/Facebook-Samim-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/md.samim.khan.22906)
+[![Phone](https://img.shields.io/badge/📞_+880--1743282144-25D366?style=for-the-badge)](tel:+8801743282144)
 
 </div>
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Here's how:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-> For major changes, please open an issue first to discuss the proposed changes.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
 <div align="center">
 
-### ⭐ If you found this helpful, give it a star!
+### ⭐ If you like my work, consider giving this repo a star!
 
-Made with ❤️ by [Samim](https://github.com/mdsamimprogramer)
+**Made with ❤️ by [Samim](https://github.com/mdsamimprogramer) from Bangladesh 🇧🇩**
 
 </div>
