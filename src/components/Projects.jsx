@@ -14,7 +14,7 @@ const projectsData = [
         title: "CareerFlow – SaaS Job Application Tracking Platform",
         description: "CareerFlow is a full-stack SaaS platform designed to help developers and job seekers manage their job applications efficiently. It includes a drag-and-drop Kanban pipeline for tracking applications, secure cloud storage for resumes, AI-powered feedback using the Gemini API to analyze job descriptions, automated email reminders for interviews and deadlines, Stripe-based subscription management, and a real-time analytics dashboard to monitor job search progress.",
         image: img6,
-        tech: ["React.js", "Redux", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "REST API", "AI API", "Stripe", "Serverless Cron Jobs", "Email Automation", "Axios", "Kanban Drag & Drop"], repo: "https://github.com/mdsamimprogramer/careerflow-job-tracker",
+        tech: ["React.js", "Redux", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "REST API", "AI API", "Stripe", "Serverless Cron Jobs", "Email Automation", "Axios", "Kanban Drag & Drop"], repo: "https://github.com/samimcodes/careerflow-job-tracker",
         demo: "https://career-flow-six.vercel.app/"
     },
     {
@@ -23,7 +23,7 @@ const projectsData = [
         description: "ContestHub is a full-stack platform to explore, join, and win contests. It features role-based dashboards (Admin, Creator, User), secure authentication, payment-based participation, contest approval, winner declaration, and a leaderboard system. Built with React, Node.js, Express, MongoDB, Firebase Authentication, JWT, Stripe, and TanStack Query.",
         image: img4,
         tech: ["React.js", "Tailwind CSS", "DaisyUI", "Node.js", "Express.js", "MongoDB", "Firebase Auth", "JWT", "Stripe", "TanStack Query", "Role Based Dashboard"],
-        repo: "https://github.com/mdsamimprogramer/ContestHub_Client",
+        repo: "https://github.com/samimcodes/ContestHub_Client",
         demo: "https://contests-hub.netlify.app/"
     },
     {
@@ -32,7 +32,7 @@ const projectsData = [
         description: "Connects users with trusted local service providers on a secure, responsive platform. Features booking management, rating system, and secure authentication.",
         image: img1,
         tech: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "CRUD Operation", "JWT", "REST API", "MongoDB", "Firebase"],
-        repo: "https://github.com/mdsamimprogramer/homehero-a10-client",
+        repo: "https://github.com/samimcodes/homehero-a10-client",
         demo: "https://homehero-ass10.netlify.app/"
     },
     {
@@ -41,7 +41,7 @@ const projectsData = [
         description: "A plant care platform featuring secure login, profile management, and consultation bookings. Built with React and Firebase.",
         image: img2,
         tech: ["React.js", "Tailwind CSS", "Firebase", "Express.js", "MongoDB"],
-        repo: "https://github.com/mdsamimprogramer/assinment-09-greennest-project",
+        repo: "https://github.com/samimcodes/assinment-09-greennest-project",
         demo: "https://asinment-8.firebaseapp.com/"
     },
     {
@@ -50,7 +50,7 @@ const projectsData = [
         description: "Next.js application with NextAuth authentication and product management. precise UI implementation with Tailwind CSS.",
         image: img3,
         tech: ["Next.js", "NextAuth", "Tailwind CSS", "MongoDB", "Vercel"],
-        repo: "https://github.com/mdsamimprogramer/next-js-client",
+        repo: "https://github.com/samimcodes/next-js-client",
         demo: "https://next-js-client-vqte.vercel.app/"
     },
     {
@@ -59,7 +59,7 @@ const projectsData = [
         description: "AppGalaxy is a modern, responsive App Showcase Platform that allows users to easily browse apps, view details, install/uninstall apps, and monitor app performance through interactive review charts.",
         image: img5,
         tech: ["React.js", "Tailwind CSS", "React Router DOM", "Firebase", "Recharts", "LocalStorage"],
-        repo: "https://github.com/mdsamimprogramer/productive-apps",
+        repo: "https://github.com/samimcodes/productive-apps",
         demo: "https://assinment-08-productive-apps.netlify.app/"
     }
 ];

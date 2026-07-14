@@ -62,7 +62,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** React · Redux · Node.js · Express · MongoDB · Stripe · AI API
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://career-flow-six.vercel.app/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/careerflow-job-tracker)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/careerflow-job-tracker)
 
 ---
 
@@ -72,7 +72,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** React · Tailwind · Node.js · Express · MongoDB · Firebase Auth · JWT · Stripe
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://contests-hub.netlify.app/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/ContestHub_Client)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/ContestHub_Client)
 
 ---
 
@@ -82,7 +82,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** React · Tailwind · Node.js · Express · MongoDB · Firebase · JWT
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://homehero-ass10.netlify.app/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/homehero-a10-client)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/homehero-a10-client)
 
 ---
 
@@ -92,7 +92,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** React · Tailwind · Firebase · Express · MongoDB
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://asinment-8.firebaseapp.com/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/assinment-09-greennest-project)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/assinment-09-greennest-project)
 
 ---
 
@@ -102,7 +102,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** Next.js · NextAuth · Tailwind · MongoDB · Vercel
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://next-js-client-vqte.vercel.app/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/next-js-client)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/next-js-client)
 
 ---
 
@@ -112,7 +112,7 @@ I'm a passionate **Full-Stack Developer** from **Rangpur, Bangladesh**, speciali
 **Tech:** React · Tailwind · Firebase · Recharts · React Router
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=flat-square)](https://assinment-08-productive-apps.netlify.app/)
-[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/mdsamimprogramer/productive-apps)
+[![GitHub](https://img.shields.io/badge/Source-Code-181717?style=flat-square&logo=github)](https://github.com/samimcodes/productive-apps)
 
 ---
 
@@ -156,7 +156,7 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 
 [![Email](https://img.shields.io/badge/mdsamimhossen827@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mdsamimhossen827@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Samim-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samim01/)
-[![GitHub](https://img.shields.io/badge/GitHub-mdsamimprogramer-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mdsamimprogramer)
+[![GitHub](https://img.shields.io/badge/GitHub-samimcodes-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/samimcodes)
 [![Facebook](https://img.shields.io/badge/Facebook-Samim-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/md.samim.khan.22906)
 [![Phone](https://img.shields.io/badge/📞_+880--1743282144-25D366?style=for-the-badge)](tel:+8801743282144)
 
@@ -168,6 +168,6 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 
 ### ⭐ If you like my work, consider giving this repo a star!
 
-**Made with ❤️ by [Samim](https://github.com/mdsamimprogramer) from Bangladesh 🇧🇩**
+**Made with ❤️ by [Samim](https://github.com/samimcodes) from Bangladesh 🇧🇩**
 
 </div>

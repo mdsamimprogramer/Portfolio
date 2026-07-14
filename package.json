@@ -39,13 +39,13 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdsamimprogramer/Portfolio.git"
+    "url": "git+https://github.com/samimcodes/Portfolio.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mdsamimprogramer/Portfolio/issues"
+    "url": "https://github.com/samimcodes/Portfolio/issues"
   },
-  "homepage": "https://github.com/mdsamimprogramer/Portfolio#readme"
+  "homepage": "https://github.com/samimcodes/Portfolio#readme"
 }

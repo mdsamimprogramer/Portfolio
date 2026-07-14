@@ -13,7 +13,7 @@ const Footer = () => {
     ];
 
     const socials = [
-        { icon: Github, href: "https://github.com/mdsamimprogramer", label: "GitHub" },
+        { icon: Github, href: "https://github.com/samimcodes", label: "GitHub" },
         { icon: Linkedin, href: "https://www.linkedin.com/in/samim01/", label: "LinkedIn" },
         { icon: Facebook, href: "https://www.facebook.com/md.samim.khan.22906", label: "Facebook" },
     ];
